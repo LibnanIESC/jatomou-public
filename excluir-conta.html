@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Excluir Conta – Já Tomou</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #f7f9fc;
+      color: #2d3748;
+      line-height: 1.7;
+    }
+    header {
+      background: #4a6fa5;
+      color: #fff;
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+    header .logo { font-size: 26px; font-weight: 800; }
+    header .logo span {
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 2px 10px;
+      margin-right: 6px;
+    }
+    header p { margin-top: 6px; font-size: 14px; opacity: 0.85; }
+    main { max-width: 700px; margin: 40px auto; padding: 0 24px 60px; }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 48px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    h1 { font-size: 22px; font-weight: 800; color: #1a202c; margin-bottom: 20px; }
+    h2 { font-size: 16px; font-weight: 700; color: #4a6fa5; margin: 28px 0 10px; }
+    p { font-size: 15px; color: #4a5568; margin-bottom: 10px; }
+    .steps { list-style: none; padding: 0; margin: 12px 0; }
+    .steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 15px;
+      color: #4a5568;
+    }
+    .steps li:last-child { border-bottom: none; }
+    .step-num {
+      background: #4a6fa5;
+      color: #fff;
+      border-radius: 50%;
+      min-width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .warning {
+      background: #fff5f5;
+      border-left: 4px solid #fc8181;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #c53030;
+      margin: 20px 0;
+    }
+    .info {
+      background: #ebf4ff;
+      border-left: 4px solid #4a6fa5;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #2c5282;
+      margin: 20px 0;
+    }
+    .contact-box {
+      background: #f0fff4;
+      border: 1px solid #9ae6b4;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+    .contact-box a { color: #276749; font-weight: 600; }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: #a0aec0;
+    }
+    @media (max-width: 600px) { .card { padding: 28px 20px; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><span>✅</span> Já Tomou</div>
+    <p>Lembrete de medicamentos para idosos com monitoramento familiar</p>
+  </header>
+
+  <main>
+    <div class="card">
+
+      <h1>Excluir Conta e Dados</h1>
+
+      <p>
+        Você pode excluir sua conta e todos os seus dados diretamente pelo aplicativo
+        <strong>Já Tomou</strong>, sem precisar entrar em contato com o suporte.
+      </p>
+
+      <div class="warning">
+        ⚠️ <strong>Atenção:</strong> a exclusão é permanente e irreversível.
+        Todos os seus medicamentos, histórico de doses e configurações serão apagados definitivamente.
+      </div>
+
+      <h2>Como excluir sua conta pelo app</h2>
+
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <span>Abra o aplicativo <strong>Já Tomou</strong> no seu celular.</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>Toque no ícone de <strong>Configurações</strong> (⚙️) no canto superior direito da tela inicial.</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>Role a tela para baixo até a seção <strong>"Dados e privacidade"</strong>.</span>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <span>Toque em <strong>"Excluir minha conta"</strong>.</span>
+        </li>
+        <li>
+          <span class="step-num">5</span>
+          <span>Confirme a exclusão na caixa de diálogo. Sua conta e todos os dados serão removidos permanentemente em até <strong>30 dias</strong>.</span>
+        </li>
+      </ol>
+
+      <h2>O que é excluído</h2>
+      <ul style="padding-left:20px; color:#4a5568; font-size:15px;">
+        <li>Todos os medicamentos cadastrados</li>
+        <li>Histórico completo de doses</li>
+        <li>Foto de perfil e dados de identificação</li>
+        <li>Vínculos familiares e configurações</li>
+        <li>Dados armazenados na nuvem (Firebase Firestore)</li>
+      </ul>
+
+      <div class="info">
+        ℹ️ Dados armazenados apenas localmente no dispositivo (modo guest / sem conta)
+        são removidos automaticamente ao desinstalar o aplicativo.
+      </div>
+
+      <h2>Prefere solicitar por e-mail?</h2>
+      <p>Se não conseguir acessar o app, envie um e-mail com o assunto
+        <strong>"Exclusão de conta – Já Tomou"</strong> e o endereço de e-mail da sua conta:</p>
+      <div class="contact-box">
+        <a href="mailto:libnaniesc@gmail.com">libnaniesc@gmail.com</a><br/>
+        <span style="color:#718096; font-size:13px;">Respondemos em até 5 dias úteis.</span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Já Tomou · <a href="politica-de-privacidade.html" style="color:#a0aec0;">Política de Privacidade</a>
+  </footer>
+
+</body>
+</html>
