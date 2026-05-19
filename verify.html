@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmação de e-mail – Já Tomou</title>
+  <!-- Roboto: mesma fonte do app Flutter (definida em app_theme.dart) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                   'Helvetica Neue', Arial, sans-serif;
+      background: #f7f9fc;
+      color: #2d3748;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4A90E2 0%, #4a6fa5 100%);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+
+    .logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Logo capsula SVG — replica fiel do CustomPainter em
+       lib/shared/widgets/app_logo.dart (azul a esquerda, verde a
+       direita, checkmark branco na metade verde). */
+    .logo-capsule {
+      width: 98px;
+      height: 45px;
+      display: block;
+    }
+
+    .brand {
+      font-family: 'Roboto', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    main {
+      flex: 1;
+      max-width: 520px;
+      width: 100%;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      transition: transform 0.4s ease;
+    }
+
+    .icon.loading {
+      background: rgba(74, 144, 226, 0.15);
+      color: #4A90E2;
+    }
+
+    .icon.success {
+      background: rgba(39, 174, 96, 0.15);
+      color: #27AE60;
+      animation: pop 0.5s ease-out;
+    }
+
+    .icon.error {
+      background: rgba(230, 126, 34, 0.15);
+      color: #E67E22;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.3); opacity: 0; }
+      80%  { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1.0); }
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(74, 144, 226, 0.2);
+      border-top-color: #4A90E2;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .message {
+      font-size: 16px;
+      color: #4a5568;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: #4A90E2;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: #3a7bc8; }
+    .btn:active { transform: scale(0.97); }
+
+    .btn.secondary {
+      background: transparent;
+      color: #4A90E2;
+      border: 2px solid #4A90E2;
+    }
+
+    .btn.secondary:hover { background: rgba(74, 144, 226, 0.08); }
+
+    .hidden { display: none; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #718096;
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #4A90E2;
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-wrap">
+      <!-- Logo capsula bicolor (azul + verde) com checkmark — fiel ao
+           AppLogo do Flutter (lib/shared/widgets/app_logo.dart). -->
+      <svg class="logo-capsule" viewBox="0 0 100 46"
+           xmlns="http://www.w3.org/2000/svg" aria-label="Já Tomou">
+        <defs>
+          <linearGradient id="capBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#6BA8EC"/>
+            <stop offset="50%"  stop-color="#4A90E2"/>
+            <stop offset="100%" stop-color="#3A7BC8"/>
+          </linearGradient>
+          <linearGradient id="capGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#3FBE82"/>
+            <stop offset="50%"  stop-color="#27AE60"/>
+            <stop offset="100%" stop-color="#1F8E4E"/>
+          </linearGradient>
+          <clipPath id="capClip">
+            <rect width="100" height="46" rx="23" ry="23"/>
+          </clipPath>
+          <filter id="capHighlight" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur stdDeviation="0.8"/>
+          </filter>
+        </defs>
+
+        <g clip-path="url(#capClip)">
+          <!-- Metade azul -->
+          <rect width="50" height="46" fill="url(#capBlue)"/>
+          <!-- Metade verde -->
+          <rect x="50" width="50" height="46" fill="url(#capGreen)"/>
+          <!-- Reflexo branco superior (suave) -->
+          <rect x="8" y="3" width="84" height="14" rx="7"
+                fill="#ffffff" opacity="0.25" filter="url(#capHighlight)"/>
+        </g>
+
+        <!-- Linha divisoria central -->
+        <line x1="50" y1="5.5" x2="50" y2="40.5"
+              stroke="rgba(0,0,0,0.15)" stroke-width="1.2"/>
+
+        <!-- Checkmark branco na metade verde (com sombra sutil) -->
+        <path d="M67.5 24.15 L72.7 28.98 L82.48 18.63"
+              stroke="rgba(0,0,0,0.22)" stroke-width="7.5"
+              stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M67.5 24.15 L72.7 28.98 L82.48 18.63"
+              stroke="#ffffff" stroke-width="6"
+              stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <div class="brand">Já Tomou</div>
+    </div>
+    <p>Lembretes de medicamentos com cuidado</p>
+  </header>
+
+  <main>
+    <div class="card" id="card">
+
+      <!-- Estado: carregando -->
+      <div id="state-loading">
+        <div class="icon loading">
+          <div class="spinner"></div>
+        </div>
+        <h1>Verificando seu e-mail…</h1>
+        <p class="message">Aguarde alguns instantes enquanto confirmamos sua conta.</p>
+      </div>
+
+      <!-- Estado: sucesso -->
+      <div id="state-success" class="hidden">
+        <div class="icon success">✓</div>
+        <h1>E-mail confirmado!</h1>
+        <p class="message">
+          Tudo certo. Sua conta no <strong>Já Tomou</strong> está ativa.
+          Você já pode voltar ao aplicativo e cadastrar seus medicamentos.
+        </p>
+        <a href="https://play.google.com/store/apps/details?id=com.jatomou.jatomou"
+           class="btn">Abrir o app</a>
+      </div>
+
+      <!-- Estado: erro -->
+      <div id="state-error" class="hidden">
+        <div class="icon error">!</div>
+        <h1>Não foi possível confirmar</h1>
+        <p class="message" id="error-msg">
+          O link de verificação é inválido ou já expirou.
+          Abra o aplicativo e solicite um novo e-mail de confirmação.
+        </p>
+        <a href="https://play.google.com/store/apps/details?id=com.jatomou.jatomou"
+           class="btn secondary">Abrir o app</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © Já Tomou · <a href="politica-de-privacidade.html">Política de Privacidade</a>
+  </footer>
+
+  <!-- Firebase Web SDK (modular v10) -->
+  <script type="module">
+    import { initializeApp } from
+      'https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js';
+    import { getAuth, applyActionCode, checkActionCode } from
+      'https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js';
+
+    // Config do projeto Firebase. Apenas chaves PUBLICAS — sao seguras de
+    // expor em HTML cliente (autenticacao real e feita server-side).
+    const firebaseConfig = {
+      apiKey: 'AIzaSyANsTQsUtjPDFm_K5ZkgCfz9z5JHQJitgs',
+      authDomain: 'jatomou.firebaseapp.com',
+      projectId: 'jatomou',
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Le parametros da URL: ?mode=verifyEmail&oobCode=XXX
+    const params = new URLSearchParams(window.location.search);
+    const mode    = params.get('mode');
+    const oobCode = params.get('oobCode');
+
+    function show(stateId, errorMsg) {
+      document.getElementById('state-loading').classList.add('hidden');
+      document.getElementById('state-success').classList.add('hidden');
+      document.getElementById('state-error').classList.add('hidden');
+      document.getElementById(stateId).classList.remove('hidden');
+      if (errorMsg) document.getElementById('error-msg').textContent = errorMsg;
+    }
+
+    async function handle() {
+      if (!oobCode) {
+        show('state-error', 'O link parece estar incompleto. Solicite um novo e-mail de verificação pelo aplicativo.');
+        return;
+      }
+
+      try {
+        // Modos suportados pelo template padrao do Firebase Auth.
+        // Inicialmente so processamos 'verifyEmail' — outros (resetPassword,
+        // recoverEmail) podem ser adicionados no futuro.
+        if (mode === 'verifyEmail') {
+          await applyActionCode(auth, oobCode);
+          show('state-success');
+        } else {
+          // Para nao perder requests, ainda tentamos applyActionCode
+          // (Firebase aceita o codigo independente do mode visivel na URL).
+          await applyActionCode(auth, oobCode);
+          show('state-success');
+        }
+      } catch (e) {
+        const code = e.code || '';
+        let msg = 'O link de verificação é inválido ou já expirou. ' +
+                  'Abra o aplicativo e solicite um novo e-mail de confirmação.';
+        if (code === 'auth/expired-action-code') {
+          msg = 'Este link expirou. Abra o aplicativo e solicite um novo e-mail.';
+        } else if (code === 'auth/invalid-action-code') {
+          msg = 'Este link já foi usado ou é inválido. Se você já confirmou o e-mail, pode abrir o app normalmente.';
+        } else if (code === 'auth/user-disabled') {
+          msg = 'Esta conta foi desativada. Entre em contato com o suporte.';
+        }
+        show('state-error', msg);
+      }
+    }
+
+    handle();
+  </script>
+</body>
+</html>
