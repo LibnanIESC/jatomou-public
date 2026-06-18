@@ -3,14 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Já Tomou – Páginas Legais</title>
-  <meta http-equiv="refresh" content="0; url=politica-de-privacidade.html" />
+  <title>Já Tomou — Lembrete de Medicamentos | Libnan</title>
+  <meta name="description" content="Já Tomou: lembrete de medicamentos para idosos, com alarme em tela cheia e acompanhamento familiar. Desenvolvido por Libnan Inteligência Empresarial e Soluções Contábeis Ltda." />
+
+  <!-- ============================================================
+       VERIFICAÇÃO DO GOOGLE SEARCH CONSOLE
+       Cole AQUI a meta tag que o Search Console fornecer, ex.:
+       <meta name="google-site-verification" content="XXXXXXXX" />
+       ============================================================ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 60px 20px; color: #4a5568; }
-    a { color: #4a6fa5; }
+    :root{
+      --azul:#4A90E2; --azul-esc:#2F6FBF; --verde:#27AE60;
+      --texto:#1A1A2E; --suave:#555; --bg:#F4F7FB;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Roboto',-apple-system,Segoe UI,sans-serif;color:var(--texto);background:var(--bg);line-height:1.55}
+    .container{max-width:880px;margin:0 auto;padding:0 22px}
+
+    header{background:linear-gradient(135deg,#5B9BE8,var(--azul-esc));color:#fff;padding:54px 0 60px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .pill{width:34px;height:18px;border-radius:9px;background:linear-gradient(90deg,var(--azul) 0 50%,var(--verde) 50% 100%);position:relative}
+    .pill::after{content:"✓";position:absolute;right:4px;top:50%;transform:translateY(-50%);color:#fff;font-size:11px;font-weight:700}
+    .brand h1{font-size:30px;font-weight:800;letter-spacing:.3px}
+    header p.tag{margin-top:18px;font-size:20px;font-weight:500;max-width:640px;opacity:.96}
+
+    .cta{display:inline-block;margin-top:24px;background:#fff;color:var(--azul-esc);font-weight:700;
+         padding:12px 22px;border-radius:30px;text-decoration:none;font-size:15px}
+    .cta.soon{background:rgba(255,255,255,.18);color:#fff;cursor:default}
+
+    section{padding:46px 0}
+    h2{font-size:22px;font-weight:800;margin-bottom:18px;color:var(--azul-esc)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+    .card{background:#fff;border-radius:16px;padding:22px;box-shadow:0 6px 22px rgba(20,40,80,.06)}
+    .card h3{font-size:16px;margin-bottom:8px}
+    .card p{color:var(--suave);font-size:14.5px}
+
+    .empresa{background:#fff;border-radius:18px;padding:28px;box-shadow:0 6px 22px rgba(20,40,80,.06)}
+    .empresa p{color:var(--suave);margin-top:8px}
+    .empresa a{color:var(--azul)}
+
+    footer{background:#0E2A4A;color:#cfe0f5;padding:30px 0;font-size:14px}
+    footer a{color:#fff;text-decoration:none;margin:0 10px}
+    footer .links{margin-bottom:10px}
   </style>
 </head>
 <body>
-  <p>Redirecionando para a <a href="politica-de-privacidade.html">Política de Privacidade</a>…</p>
+
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo"><div class="pill"></div></div>
+        <h1>Já Tomou</h1>
+      </div>
+      <p class="tag">O lembrete de medicamentos feito para idosos — alarme em tela cheia no horário certo e acompanhamento da família, mesmo de longe.</p>
+      <span class="cta soon">Em breve na Google Play</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2>O que o app faz</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>⏰ Alarme infalível</h3>
+          <p>Abre em tela cheia no horário do remédio, mesmo com o celular bloqueado e sem internet — com a foto da embalagem.</p>
+        </div>
+        <div class="card">
+          <h3>👪 Acompanhamento familiar</h3>
+          <p>Um familiar acompanha as doses pelo próprio celular e é avisado se um remédio não for confirmado.</p>
+        </div>
+        <div class="card">
+          <h3>📋 Histórico e relatório</h3>
+          <p>Registro de doses tomadas, adiadas ou perdidas, com exportação em PDF para mostrar ao médico.</p>
+        </div>
+        <div class="card">
+          <h3>🙆 Fácil para idosos</h3>
+          <p>Letras grandes, botões simples e cadastro de remédio em menos de um minuto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <h2>Quem desenvolve</h2>
+      <div class="empresa">
+        <strong>Libnan Inteligência Empresarial e Soluções Contábeis Ltda</strong>
+        <p>Guaíra — São Paulo, Brasil.</p>
+        <p>Contato: <a href="mailto:libnaniesc@gmail.com">libnaniesc@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="links">
+        <a href="politica-de-privacidade.html">Política de Privacidade</a> ·
+        <a href="excluir-conta.html">Exclusão de conta</a> ·
+        <a href="mailto:libnaniesc@gmail.com">Suporte</a>
+      </div>
+      © 2026 Libnan Inteligência Empresarial e Soluções Contábeis Ltda. Todos os direitos reservados.
+    </div>
+  </footer>
+
 </body>
 </html>
